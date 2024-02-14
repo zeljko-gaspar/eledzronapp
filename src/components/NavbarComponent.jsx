@@ -5,6 +5,13 @@ import logo from "../assets/logo.png";
 // icons
 import { CiUser, CiHeart, CiShoppingCart } from "react-icons/ci";
 
+import {
+	SignInButton,
+	SignedIn,
+	SignedOut,
+	UserButton,
+} from "@clerk/clerk-react";
+
 function NavbarComponent() {
 	return (
 		<div className="bg-mainBlue py-[10px] xl:py-[0px] lg:h-[100px] flex items-center">
@@ -25,7 +32,23 @@ function NavbarComponent() {
 				<div className="flex items-center gap-[10px] text-textWhite">
 					<div className="flex items-center gap-[5px]">
 						<CiUser size={30} />
-						<span>Sign In</span>
+						<SignedOut>
+							<SignInButton />
+						</SignedOut>
+						<SignedIn>
+							<UserButton
+								// showName={true}
+								afterSignOutUrl="/"
+								appearance={{
+									variables: {
+										colorText: "#f90",
+									},
+									elements: {
+										avatarBox: "w-[w-40px] h-[40px]",
+									},
+								}}
+							/>
+						</SignedIn>
 					</div>
 					<div className="flex items-center gap-[5px]">
 						<div className="flex items-center">
